@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Otter.Core.Data;
 using DotNetEnv;
+using Otter.Core.Interfaces;
+using Otter.Core.Services;
 
 Env.TraversePath().Load();
 
@@ -11,6 +13,8 @@ var connectionString = $"Host={Env.GetString("DB_HOST")};" +
                        $"Password={Env.GetString("POSTGRES_PASSWORD")}";
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Add services to the container.
 

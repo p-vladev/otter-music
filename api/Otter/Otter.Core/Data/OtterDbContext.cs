@@ -22,13 +22,8 @@ public class OtterDbContext : DbContext
     public DbSet<UserSavedPlaylist> UserSavedPlaylists { get; set; }
     public DbSet<Authorship> Authorships { get; set; }
 
-    // Тут можна налаштовувати додаткові правила, якщо атрибутів в класах недостатньо
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
-        // Наприклад, якщо ти забув [PrimaryKey] в атрибутах, можна додати це тут:
-        // modelBuilder.Entity<PlaylistSong>()
-        //     .HasKey(ps => new { ps.PlaylistId, ps.SongId });
     }
 }
