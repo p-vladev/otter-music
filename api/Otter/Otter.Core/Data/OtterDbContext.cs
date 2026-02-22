@@ -21,6 +21,7 @@ public class OtterDbContext : DbContext
     public DbSet<PlaylistSong> PlaylistSongs { get; set; }
     public DbSet<UserSavedPlaylist> UserSavedPlaylists { get; set; }
     public DbSet<Authorship> Authorships { get; set; }
+    public DbSet<UserRefreshToken> UserRefreshToken { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

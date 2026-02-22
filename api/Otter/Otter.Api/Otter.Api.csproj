@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
 	<AnalysisLevel>latest-all</AnalysisLevel>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <NoWarn>CA2007</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

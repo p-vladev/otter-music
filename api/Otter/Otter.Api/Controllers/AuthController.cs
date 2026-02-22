@@ -23,17 +23,43 @@ public class AuthController : ControllerBase
     {
         try
         {
-            // Контролер нічого не знає про БД чи хешування. Він просто просить сервіс зробити роботу.
-            var response = await authService.Register(dto).ConfigureAwait(true);
+            var response = await authService.Register(dto);
 
-            // Якщо все добре, повертаємо HTTP 200 (OK) і сам DTO з токеном
             return Ok(response);
         }
         catch (ArgumentException ex)
         {
-            // Якщо сервіс викинув помилку (наприклад, "Email вже існує"), 
-            // повертаємо HTTP 400 (Bad Request) з текстом помилки
             return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginUserDto dto)
+    {
+        try
+        {
+            var response = await authService.Login(dto);
+
+            return Ok(response);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest($"{ex.Message}");
+        }
+    }
+
+    [HttpPost("refresh-token")]
+    public async Task<IActionResult> RefreshToken([FromBody] string token)
+    {
+        try
+        {
+            var response = await authService.RefreshToken(token);
+
+            return Ok(response);
+        }
+        catch (ArgumentException ex) 
+        {
+            return BadRequest($"{ex.Message}");
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Otter.Core.Interfaces;
 
 public interface IAuthService
 {
-    Task<ResponseUserDto> Register(RegisterUserDto dto);
+    Task<AuthResponseDto> Register(RegisterUserDto dto);
 
     Task<AuthResponseDto> Login(LoginUserDto dto);
 

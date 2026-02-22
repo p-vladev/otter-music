@@ -8,5 +8,6 @@ namespace Otter.Core.DTOs;
 
 public record AuthResponseDto(
     ResponseUserDto ResponseUserDto,
-    string Token
+    string AccessToken,
+    string RefreshToken
 );

@@ -15,6 +15,7 @@ var connectionString = $"Host={Env.GetString("DB_HOST")};" +
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 // Add services to the container.
 
