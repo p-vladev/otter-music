@@ -8,22 +8,22 @@ namespace Otter.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 #pragma warning disable CA1515 // Consider making public types internal
-public class SongController : ControllerBase
+public class ArtistController : ControllerBase
 #pragma warning restore CA1515 // Consider making public types internal
 {
-    private readonly ISongService songService;
+    private readonly IArtistService artistService;
 
-    public SongController(ISongService songService)
+    public ArtistController(IArtistService artistService)
     {
-        this.songService = songService;
+        this.artistService = artistService;
     }
 
-    [HttpPost("add")]
-    public async Task<IActionResult> CreateSong([FromBody] CreateSongDto dto)
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateArtistProfile([FromBody] CreateArtistDto dto, long userId)
     {
         try
         {
-            var response = await songService.CreateSong(dto);
+            var response = await artistService.CreateArtistProfile(dto, userId);
 
             return Ok(response);
         }
