@@ -18,6 +18,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<ISongService, SongService>();
 builder.Services.AddScoped<IArtistService, ArtistService>();
+builder.Services.AddScoped<IAlbumService, AlbumService>();
 
 // Add services to the container.
 
