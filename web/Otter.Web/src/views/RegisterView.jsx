@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
 
 function RegisterView() {
-        
+    const { login } = useAuth();        
     const API_URL = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
 
@@ -27,6 +28,11 @@ function RegisterView() {
 
             console.log("Registration successful:", res.data);
 
+            localStorage.setItem("token", res.data.accessToken);
+            localStorage.setItem("refreshToken", res.data.refreshToken);
+            localStorage.setItem("user", JSON.stringify(res.data.responseUserDto));
+
+            login();
             navigate("/");
         } catch (error) {
             console.error("Registration error:", error);
